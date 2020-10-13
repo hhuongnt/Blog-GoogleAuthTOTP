@@ -1,0 +1,36 @@
+<h1>All Categories</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Category Name</th>
+      <th>Category Description</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category|%>
+    <tr>
+      <td><%= category.name %></td>
+      <td><%= category.description.html_safe %></td>
+      <td><%= link_to "Show posts", category_path(category), class: 'btn btn-warning' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= form_with(model: [@user, Category.new]) do |f| %>
+<p>
+  <%= f.label :name, "New Category Name" %><br>
+  <%= f.text_field :name %>
+</p>
+
+<p>
+  <%= f.label :description, "Category Description" %><br>
+  <%= f.text_area :description %>
+</p>
+
+<%= f.submit "Add category" %>
+<% end %>
+
+<br>

@@ -1,0 +1,11 @@
+<% categories.each do |c| %>
+  <div class="col-xs-6 col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-body easypiechart-panel">
+        <div class="easypiechart" id="easypiechart-teal" data-percent="56" >
+          <strong><span class="percent"><%= link_to c.name.upcase, category_path(c.id) %></span></strong>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

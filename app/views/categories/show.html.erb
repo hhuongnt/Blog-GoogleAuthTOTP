@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h1>Category: <%= @category.name.upcase() %></h1>
+      <h3>Description: <%= @category.description.html_safe %></h3>
+      <%= link_to "Add new #{@category.name} post", new_category_post_path(@category), class:"btn btn-primary" %>
+      <br><br>
+
+      <%= render 'shared/post_show', posts: @posts %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<header class="masthead" style="background-image: url('../../assets/img/home-bg.jpg')">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="blog-heading">
+          <h1>GoldenBlog</h1>
+          <span class="subheading">A Practice Blog by Mabel</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h3>Search posts:</h3>
+      <p>
+        <%= form_tag(posts_path, method: 'get', remote: true) %>
+        <%= text_field_tag(:search) %>
+        <%= submit_tag("Search")%>
+      </p>
+
+      <div class="search-field">
+        <%= render 'shared/post_show', posts: @posts %>
+      </div>
+    </div>
+  </div>
+</div>

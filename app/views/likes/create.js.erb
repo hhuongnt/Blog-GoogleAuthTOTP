@@ -1,0 +1,2 @@
+jQuery('.like-container').html("<%= escape_javascript render(partial: 'dislike_btn', locals: { post: @post, pre_like: @liked }) %>")
+jQuery('.like_show').html("<%= @post.likes.count == 0 ? 'Like: ' : @post.likes.count == 1 ? 'Like: ' : 'Likes: ' %> <%= @post.likes.count %>")

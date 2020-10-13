@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <h1>Top Posts</h1>
+      <p>
+        <%= form_tag(top_posts_posts_path, method: :get, class: 'show_top') %>
+        <%= select_tag "choice", options_for_select(["Select a time", "Today", "Week", "Month"], params[:choice]) %>
+      </p>
+
+      <%= render 'shared/post_show', posts: @posts %>
+    </div>
+  </div>
+</div>

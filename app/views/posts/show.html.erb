@@ -1,0 +1,92 @@
+<% set_meta_tags og: { title: 'GoldenBlog' } %>
+<% set_meta_tags og: { description: @post.title } %>
+<% set_meta_tags og: { image: @post.image } %>
+
+<div class="post">
+
+  <!-- Page Header -->
+  <header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+    <div class="col-lg-8 col-md-10 mx-auto">
+      <div class="post-heading">
+        <h1><strong><%= @post.title.titleize %></strong><h1>
+        <span class="meta">Posted by <a href=<%= admin_user_path(@post.user.id) %>><%= @post.user.email %></a> on <%= @post.created_at %></span>
+      </div>
+    </div>
+  </div>
+  </header>
+
+  <!-- Post Content -->
+  <div>
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <p><%= @post.content.html_safe %></p>
+
+            <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
+
+            <% if @post.image.present? %>
+              <p><%= image_tag(@post.image.standard.url) %></p>
+            <% end %>
+
+            <p>A Chinese tale tells of some men sent to harm a young girl who, upon seeing her beauty, become her protectors rather than her violators. That's how I felt seeing the Earth for the first time. I could not help but love and cherish her.</p>
+
+            <% if current_user %>
+              <p>Post Rating </p>
+              <p class='points'>Points: <%= post_rate(@post) %>/5</p>
+              <form name='post_rating' id="post_rating_form_<%= @post.id %>" method='post' action="<%= post_rates_path(@post) %>">
+                <div class="rating">
+                  <% 5.downto(1).each do |i| %>
+                    <input type="radio" name="rating" value="<%= i %>" id="rating_<%= i %>_post_<%= @post.id %>" <%= i == @rating_point ? 'checked' : '' %>>
+                    <label for="rating_<%= i %>_post_<%= @post.id %>">☆</label>
+                  <% end %>
+                </div>
+              </form>
+
+              <p class="like_show"><strong><%= @post.likes.count == 0 ? 'Like: ' : @post.likes.count == 1 ? 'Like: ' : 'Likes: ' %></strong><%= @post.likes.count %></p>
+
+              <div class="like-container">
+                <% if @pre_like %>
+                  <%= button_to 'Dislike', post_like_path(@post, @pre_like), method: :delete, remote: true, class: "btn btn-primary" %>
+                <% else %>
+                  <%= button_to 'Like', post_likes_path(@post), method: :post, remote: true, class: "btn btn-primary" %>
+                <% end %>
+              </div>
+              <br>
+
+              <p>
+                <strong>Comments: </strong><br>
+                <% @post.comments.each do |comment|%>
+                  <%= comment.user.email %>:
+                  <%= comment.content %>
+                  <br>
+                <% end %>
+              </p>
+              <br>
+
+              <%= form_with(model: [@post, Comment.new] ) do |f| %>
+                <%= f.label :comment %>
+                <br>
+                <%= f.text_field :content %>
+                <br><br>
+
+                <%= f.submit "Add comment", class: "btn btn-primary" %>
+              <% end %>
+              <br>
+            <% end %>
+            <hr>
+
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ef3002f1be84787"></script>
+
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div class="addthis_inline_share_toolbox"></div>
+
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>

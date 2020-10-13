@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-12">
+    <%= form_with(model: @post, data: { remote: false}) do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :content %>
+        <%= f.text_area :content, class: 'edit-post' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+        <% if f.object.image.url.present? %>
+          <%= image_tag f.object.image.url, class: 'img-thumbnail', width: '200px'%>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :category , "Category" %>
+        <%= f.collection_select :category_id, @categories, :id, :name, prompt: "Select Category" %>
+      </div>
+
+      <% if current_user&.admin? %>
+        <div class="form-group">
+          <%= f.label :status , "Status" %>
+          <%= select_tag 'post[status]', options_for_select(Post::STATUSES.inject({}) { |obj, item| obj.merge(item[1] => item[0].to_s) }) %>
+        </div>
+      <% end %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

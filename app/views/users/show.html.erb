@@ -1,0 +1,26 @@
+<div class="center">
+  <h1>Profile: <%= @user.email %></h1>
+
+  <div class="panel">
+    <div class="container-fluid">
+      <h3>First name: <%= @user.first_name %></h3>
+      <h3>Last name: <%= @user.last_name %></h3>
+      <h3>Age: <%= @user.age %></h3>
+      <h3>Gender: <%= @user.gender %></h3>
+
+      <h3>Avatar:
+        <% if @user.avatar? %>
+          <span><%= image_tag(@user.avatar.thumb.url) %></span>
+        <% elsif @user.image? %>
+          <span><%= image_tag(@user.image) %></span>
+        <% else %>
+          <span></span>
+        <% end %>
+      </h3>
+
+      <h3>Role: <%= @user.role %></h3>
+    </div>
+  </div>
+  <br>
+
+</div>

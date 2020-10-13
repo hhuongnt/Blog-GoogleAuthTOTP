@@ -1,0 +1,38 @@
+<div class="center">
+  <h1>Edit User Profile</h1>
+
+  <div class="panel">
+    <div class="container-fluid">
+      <%= form_with(model: [:admin, @user]) do |f| %>
+        <div class="field">
+          <%= f.label :first_name %><br />
+          <%= f.text_field :first_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :last_name %><br />
+          <%= f.text_field :last_name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :age %><br />
+          <%= f.number_field :age %>
+        </div>
+
+        <div class="field">
+          <%= f.label :gender %><br />
+          <%= f.text_field :gender %>
+        </div>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+        <br>
+
+        <%= f.submit 'Update', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

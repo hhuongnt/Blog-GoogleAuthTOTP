@@ -1,0 +1,26 @@
+<% posts.each do |post| %>
+  <div class="post-preview">
+    <a href=<%= post_path(post.id) %>>
+      <h2 class="post-title"><strong><%= post.title.titleize %></strong></h2>
+      <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
+    </a>
+
+    <p class="post-meta">Posted by
+      <a href=<%= user_path(post.user.id) %>><%= post.user.email %></a>
+      on <%= post.created_at %><br>
+
+      <% if request.path == '/posts/top/posts' %>
+        <strong><%= post.likes.count %> <%= post.likes.count == 1 ? 'like' : post.likes.count == 0 ? 'like' : 'likes' %></strong>
+      <% elsif request.path == '/posts/status'%>
+        <strong>Status: <%= post.status == 'New' ? 'Pending' : post.status %></strong>
+      <% end %>
+    </p>
+
+      <% if current_user&.role == 'admin' || post.user == current_user %>
+        <%= link_to 'Edit post', edit_post_path(post), class: 'btn btn-primary' %>
+        <%= link_to 'Destroy', post_path(post.id), method: :delete, class: 'btn btn-danger', data: {confirm: "Are you sure you want to delete this post?"}, remote: true %>
+      <% end %>
+
+      <hr>
+  </div>
+<% end %>

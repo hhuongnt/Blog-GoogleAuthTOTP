@@ -1,0 +1,32 @@
+<div class="main">
+	<div class="row">
+		<ol class="breadcrumb">
+			<li><a href="#">
+				<em class="fa fa-home"></em>
+			</a></li>
+			<li class="active">Posts Status </li>
+		</ol>
+	</div><!--/.row-->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Pending Posts</h1>
+		</div>
+	</div><!--/.row-->
+	<%= render 'posts', posts: @new_posts %>
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Approved Posts</h1>
+		</div>
+	</div><!--/.row-->
+	<%= render 'posts', posts: @approved_posts %>
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Declined Posts</h1>
+		</div>
+	</div><!--/.row-->
+	<%= render 'posts', posts: @declined_posts %>
+</div>
