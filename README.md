@@ -1,4 +1,6 @@
-# Assignment: Blog app 2FA with Devise and Google Authenticator Time-based OTP
+# Assignment: Blog app
+
+Blog with Devise and Google Authenticator 2FA
 
 https://boiling-cove-11931.herokuapp.com/
 
