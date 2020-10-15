@@ -69,9 +69,5 @@ gem 'devise'
 gem 'figaro'
 gem 'meta-tags'
 gem 'omniauth-facebook'
-
-# gem 'google-authenticator-rails'
-# gem 'devise-two-factor'
-# gem 'rqrcode'
-# gem 'devise_google_authenticator'
 gem 'two_factor_authentication'
+gem "recaptcha", require: "recaptcha/rails"

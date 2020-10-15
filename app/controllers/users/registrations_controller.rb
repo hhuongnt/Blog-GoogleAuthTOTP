@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  prepend_before_action :check_captcha, only: [:create]
   before_action :prepare_user, only: %i[confirm_two_factor confirm_two_factor_update]
   def confirm_two_factor
     self.resource = current_user
@@ -35,6 +36,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+
+  def check_captcha
+    return if verify_recaptcha
+
+    self.resource = resource_class.new sign_up_params
+    respond_with_navigational(resource) { render :new }
+  end
 
   def prepare_user
     @user = User.find(session[:user].dig('id'))
