@@ -1,8 +1,8 @@
 # Assignment: Blog app
 
-Blog with Devise and Google Authenticator 2FA
+Blog with Devise and Google Authenticator 2FA + Google reCAPTCHA
 
-https://boiling-cove-11931.herokuapp.com/
+https://hidden-oasis-41319.herokuapp.com/
 
 # Project Setup
 
