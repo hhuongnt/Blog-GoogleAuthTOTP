@@ -111,7 +111,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: 'https://boiling-cove-11931.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'https://hidden-oasis-41319.herokuapp.com' }
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
@@ -123,7 +123,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.hosts << 'boiling-cove-11931.herokuapp.com'
+  config.hosts << /.*\.herokuapp\.com/
 
   # Whitelist ngrok connections to development enviroment.
   config.hosts << /[a-z0-9]+\.ngrok\.io/
