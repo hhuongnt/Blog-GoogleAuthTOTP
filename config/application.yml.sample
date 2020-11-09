@@ -1,11 +1,14 @@
+GMAIL_USERNAME: ''
+GMAIL_PASSWORD: ''
+
+OTP_SECRET_ENCRYPTION_KEY: ''
+
 cloudinary_cloud: ''
 cloudinary_key: ''
 cloudinary_secret: ''
 
-GMAIL_USERNAME: ''
-GMAIL_PASSWORD: ''
-
 FACEBOOK_APP_ID: ''
 FACEBOOK_APP_SECRET: ''
 
-OTP_SECRET_ENCRYPTION_KEY: ''
+RECAPTCHA_KEY: ''
+RECAPTCHA_SECRET: ''
