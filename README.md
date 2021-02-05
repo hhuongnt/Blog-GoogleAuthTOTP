@@ -1,6 +1,6 @@
 # Assignment: Blog app
 
-Blog with Devise and Google Authenticator 2FA + Google reCAPTCHA
+Blog using Devise + Google Authenticator 2FA + Google reCAPTCHA
 
 https://hidden-oasis-41319.herokuapp.com/
 
